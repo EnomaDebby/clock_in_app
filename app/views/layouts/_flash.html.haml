@@ -1,0 +1,5 @@
+- flash.each do |type, message|
+  - unless type.to_s == 'timedout'
+    %div{:class => "alert #{bootstrap_class_for(type)} fade in"}
+      %button.close{"data-dismiss" => "alert"} ×
+      = message

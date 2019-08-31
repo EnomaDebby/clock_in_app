@@ -1,0 +1,24 @@
+.container.events
+  %table.table.custab
+    %thead.thead-light
+      = link_to "Add Time Entry", new_event_path, class: "btn btn-primary btn-xs pull-right add-new-entry"
+      %tr
+        %th Date
+        %th Time
+        %th Entry
+        %th Reason
+        %th.text-center Actions
+
+    - @events.each do |event|
+      %tr
+        %td= event.logged_at.strftime("%d-%m-%Y")
+        %td= event.logged_at.strftime("%I:%M %P")
+        %td= event.clock_in? ? "Clock In" : "Clock Out"
+        %td= event.reason
+        %td.text-center
+          = link_to edit_event_path(event), class: "btn btn-info btn-xs" do
+            %i.fa.fa-edit
+            Edit
+          = link_to event_path(event), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" do
+            %i.fa.fa-trash
+            Del

@@ -1,0 +1,25 @@
+.fade:not(.show) {
+  opacity: inherit;
+}
+
+.btn-primary {
+  background: #79be43;
+  border: none;
+
+  &:hover {
+    background: green;
+  }
+}
+
+.alert {
+  text-align: center;
+}
+
+.text-info {
+  color: #000;
+}
+
+
+a {
+  color: #34b9c6;
+}

@@ -1,3 +1,3 @@
-class ClockInEvent < Event
+class ClockOutEvent < Event
 
 end
