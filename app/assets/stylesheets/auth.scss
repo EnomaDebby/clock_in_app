@@ -1,14 +1,24 @@
 .auth {
-  padding: 5% 35%;
-
   .auth-form {
-    background: #ccc;
+    margin: 20% 0;
+    background: #f2f2f2;
     border-radius: 4px;
 
     form {
       padding: 30px;
+
+      .action {
+        text-align: center;
+
+        input {
+          width: 100%;
+        }
+      }
+
+      #register-link.text-right {
+        margin-top: 20px;
+      }
     }
   }
-
 
 }

@@ -7,5 +7,10 @@
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'bundle'
   %body
+    = render "layouts/navbar"
+    = render "layouts/flash"
     = yield
+    -#- if Rails.env.development?
+    -#  = javascript_include_tag 'http://localhost:8080/assets/javascripts/bundle.js'
