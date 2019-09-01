@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   def index
     redirect_to root_path and return unless current_user
-    @events = current_user.events.all
+    @events = current_user.events.all.order(logged_at: :desc)
   end
 
   def new; end
@@ -16,9 +16,7 @@ class EventsController < ApplicationController
 
     user = User.find_by_email(event_params[:email])
 
-    unless current_user or (user.present? && user.valid_password?(event_params[:password]))
-      render(json: {errors: [{attribute: "login", error: 'Invalid Email or Password'}]}, status: 400) && return
-    end
+    handle_unauthenticated_user(user) and return
     sign_in_user(user)
 
     event = current_user.events.new(event_params)
@@ -34,6 +32,7 @@ class EventsController < ApplicationController
   end
 
   def update
+    event = current_user.events.find(params[:id])
     service = EventService.new(event, event_params)
     if service.save
       render json: {}
@@ -62,6 +61,12 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:logged_at, :event_type, :reason, :email, :password)
+  end
+
+  def handle_unauthenticated_user(user)
+    unless current_user or (user.present? && user.valid_password?(event_params[:password]))
+      render(json: {errors: [{attribute: "login", error: 'Please provide a valid email and password to proceed'}]}, status: 400)
+    end
   end
 
   def sign_in_user(user)

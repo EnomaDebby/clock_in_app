@@ -1,6 +1,4 @@
 .event.container
   - unless current_user
     = link_to "Don't have an account? Sign Up", new_registration_path(:user)
-    %br/
-    = link_to "Forgot Password?", new_password_path(:user)
   #react-new-event-form{ userId: current_user&.id }

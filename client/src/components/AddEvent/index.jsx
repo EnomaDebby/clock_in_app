@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { DateTimePicker, FancySelect, FlashMessage } from '../common';
+import { DateTimePicker, FlashMessage } from '../common';
 import Api from '../Api';
 import '../style.scss';
 
@@ -12,7 +12,7 @@ class AddEvent extends Component {
       email: '',
       password: '',
       loggedAt: new Date(),
-      eventType: { label: 'Clock In', value: 'clock_in' },
+      eventType: 'clock_in',
       reason: '',
       formErrors: {},
       userLoggedIn: props.userLoggedIn ? true : false,
@@ -129,29 +129,43 @@ class AddEvent extends Component {
                 {this.getErrorMessageFor('logged_at')}
               </div>
             </div>
-            <div className="form-group">
+            <div className="form-group event-type">
               <label>
                 Event Type <span className="required">*</span>
               </label>
-              <FancySelect
-                value={eventType}
-                handleChange={this.onChangeEventType}
-                options={[
-                  {
-                    label: 'Clock In',
-                    value: 'clock_in',
-                  },
-                  { label: 'Clock Out', value: 'clock_out' },
-                ]}
-                placeholder="Select One"
-                className=""
-              />
+              <br />
+              <div className="radio-buttons">
+                <div className="custom-control-inline">
+                  <input
+                    type="radio"
+                    id="clockIn"
+                    name="clockEvent"
+                    value="clock_in"
+                    className=""
+                    checked={eventType === 'clock_in'}
+                    onChange={this.handleChange.bind(this, 'eventType')}
+                  />
+                  <label className="">Clock In</label>
+                </div>
+                <div className="custom-control-inline">
+                  <input
+                    type="radio"
+                    id="clockOut"
+                    name="clockEvent"
+                    value="clock_out"
+                    className=""
+                    checked={eventType === 'clock_out'}
+                    onChange={this.handleChange.bind(this, 'eventType')}
+                  />
+                  <label className="">Clock Out</label>
+                </div>
+              </div>
               <div className="error">
                 {this.getErrorMessageFor('event_type')}
               </div>
             </div>
             <div className="form-group">
-              <label>Reason(optional)</label>
+              <label>Description</label>
               <textarea
                 className="form-control"
                 id="exampleFormControlTextarea1"

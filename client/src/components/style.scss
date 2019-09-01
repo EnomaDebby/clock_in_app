@@ -16,6 +16,16 @@
       .error {
         font-size: 12px;
       }
+
+      .event-type {
+        .radio-buttons {
+          margin-left: 12px;
+          label {
+            margin-left: 8px;
+            margin-top: -4px;
+          }
+        }
+      }
     }
   }
 }

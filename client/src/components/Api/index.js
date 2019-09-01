@@ -25,7 +25,7 @@ class Api {
         password,
         logged_at: loggedAt,
         reason: reason,
-        event_type: eventType.value,
+        event_type: eventType,
       },
     };
 
@@ -42,7 +42,7 @@ class Api {
       event: {
         logged_at: loggedAt,
         reason: reason,
-        event_type: eventType.value,
+        event_type: eventType,
       },
     };
     return new Promise((resolve, reject) => {

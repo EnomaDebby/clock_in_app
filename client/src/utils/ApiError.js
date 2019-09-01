@@ -1,11 +1,5 @@
-// import FormatError from 'FormatError';
-
 class ApiError {
   constructor(response) {
-    // super(response.statusText);
-    this.name = this.constructor.name;
-    this.statusText = response.statusText;
-    this.responseStatus = response.status;
     try {
       this.errors = JSON.parse(response.responseText).errors;
     } catch (e) {
