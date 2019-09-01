@@ -51,4 +51,4 @@ test:
 #
 production:
   <<: *default
-  database: CLOCK_IN_APP_DATABASE
+  database: <%= ENV['CLOCK_IN_APP_DATABASE'] %>
