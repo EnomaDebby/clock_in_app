@@ -12,11 +12,12 @@
 default: &default
   adapter: mysql2
   encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: "root"
+  password:
 
 development:
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV['CLOCK_IN_APP_DATABASE_USERNAME'] %>
-  password: <%= ENV['CLOCK_IN_APP_DATABASE_PASSWORD'] %>
+  <<: *default
   database: clock_in_app_development
 
 # Warning: The database defined as "test" will be erased and

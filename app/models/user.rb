@@ -9,6 +9,4 @@ class User < ApplicationRecord
   has_many :clock_out_events
 
   validates_presence_of :first_name, :last_name
-
-  attr_accessor :reason, :logged_at, :event_type
 end

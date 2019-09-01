@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_31_164727) do
+ActiveRecord::Schema.define(version: 2019_09_01_090832) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "logged_at"
     t.string "type"
-    t.text "reason"
+    t.string "reason"
+    t.datetime "logged_at"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
