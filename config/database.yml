@@ -13,9 +13,11 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
+  username: <%= ENV['CLOCK_IN_APP_DATABASE_USERNAME'] %>
+  password: <%= ENV['CLOCK_IN_APP_DATABASE_PASSWORD'] %>
+  host: <%= ENV['CLOCK_IN_APP_DATABASE_HOST'] %>
   socket: /tmp/mysql.sock
+
 
 development:
   <<: *default
@@ -49,6 +51,4 @@ test:
 #
 production:
   <<: *default
-  database: clock_in_app_production
-  username: clock_in_app
-  password: <%= ENV['CLOCK_IN_APP_DATABASE_PASSWORD'] %>
+  database: CLOCK_IN_APP_DATABASE
