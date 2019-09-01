@@ -4,9 +4,5 @@ Rails.application.routes.draw do
 
   resources :events
 
-  # authenticate :user do
-  #   resources :events, except: [:new]
-  # end
-
   root to: 'home#index'
 end

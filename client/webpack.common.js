@@ -17,10 +17,14 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
     new webpack.EnvironmentPlugin({ ...process.env }),
   ],
+  performance: {
+    maxEntrypointSize: 612000,
+    maxAssetSize: 612000,
+  },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /(\.jsx|\.js)?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
