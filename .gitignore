@@ -31,3 +31,5 @@ client/package-lock.json
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 /config/application.yml
+.generators
+.rakeTasks
